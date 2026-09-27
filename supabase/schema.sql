@@ -1,0 +1,6 @@
+-- Applied to the shared De Vie Supabase project (izkvvdlkdywtvzmqmvos) on 27 Sept 2026
+-- as migrations social_v1 and social_v1_hardening. Kept here for reference.
+-- Tables: public.social_posts, social_pillars, social_targets, social_ig_connection
+-- Functions: public.has_social_access(), social_connection_status(), social_events(date, date)
+-- Access: an active admin, or profiles.permissions = {"socials": true}.
+-- social_ig_connection has RLS on and no policies: only the service role (the sync) reads the token.
