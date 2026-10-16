@@ -20,14 +20,14 @@ const config: Config = {
     extend: {
       boxShadow: { overlay: "0 6px 20px rgba(2, 91, 76, .07)" },
       colors: {
-        ink: { DEFAULT: "#17201D", soft: "#5C6B66" },
-        paper: { DEFAULT: "#FBFBF8", card: "#FFFFFF", line: "#E6E8E2", wash: "#F4F1EC" },
+        ink: { DEFAULT: "rgb(var(--c-ink) / <alpha-value>)", soft: "rgb(var(--c-ink-soft) / <alpha-value>)" },
+        paper: { DEFAULT: "rgb(var(--c-paper) / <alpha-value>)", card: "rgb(var(--c-card) / <alpha-value>)", line: "rgb(var(--c-line) / <alpha-value>)", wash: "rgb(var(--c-wash) / <alpha-value>)" },
         brand: { DEFAULT: "#025B4C", soft: "#0B7A63", mint: "#71C3C4" },
         copper: { DEFAULT: "#E16000", deep: "#B24700", soft: "#F0B37A" },
-        good: { DEFAULT: "#1E7A57", tint: "#E5F2EC", line: "#BFE0CD" },
-        warn: { DEFAULT: "#A9781A", tint: "#F6ECCF", line: "#E3D3AD" },
-        danger: { DEFAULT: "#C0392B", tint: "#F7E1DE", line: "#E0B8B2" },
-        info: { DEFAULT: "#1D5FA8", tint: "#E6EEFA", line: "#C2D5F0" },
+        good: { DEFAULT: "rgb(var(--c-good) / <alpha-value>)", tint: "rgb(var(--c-good-tint) / <alpha-value>)", line: "rgb(var(--c-good-line) / <alpha-value>)" },
+        warn: { DEFAULT: "rgb(var(--c-warn) / <alpha-value>)", tint: "rgb(var(--c-warn-tint) / <alpha-value>)", line: "rgb(var(--c-warn-line) / <alpha-value>)" },
+        danger: { DEFAULT: "rgb(var(--c-danger) / <alpha-value>)", tint: "rgb(var(--c-danger-tint) / <alpha-value>)", line: "rgb(var(--c-danger-line) / <alpha-value>)" },
+        info: { DEFAULT: "rgb(var(--c-info) / <alpha-value>)", tint: "rgb(var(--c-info-tint) / <alpha-value>)", line: "rgb(var(--c-info-line) / <alpha-value>)" },
       },
       fontFamily: {
         sans: ["Epilogue", "Segoe UI", "system-ui", "-apple-system", "sans-serif"],

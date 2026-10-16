@@ -17,6 +17,7 @@
 
 :root {
   color-scheme: light;
+  --c-ink:23 32 29; --c-ink-soft:92 107 102; --c-paper:251 251 248; --c-card:255 255 255; --c-line:230 232 226; --c-wash:244 241 236; --c-good:30 122 87; --c-good-tint:229 242 236; --c-good-line:191 224 205; --c-warn:169 120 26; --c-warn-tint:246 236 207; --c-warn-line:227 211 173; --c-danger:192 57 43; --c-danger-tint:247 225 222; --c-danger-line:224 184 178; --c-info:29 95 168; --c-info-tint:230 238 250; --c-info-line:194 213 240;
   /* DESIGN.md 2.1, verbatim */
   --dv-green: #025B4C; --dv-green-2: #0B7A63; --dv-green-soft: #71C3C4;
   --dv-copper: #E16000; --dv-copper-deep: #B24700; --dv-copper-soft: #F0B37A;
@@ -211,3 +212,17 @@ h1, h2, h3, .display {
 
 /* Striping for row lists of 3+ (DESIGN.md 3.6) */
 .dv-rows > .dv-row:nth-of-type(even) { background: var(--dv-wash); }
+
+/* Dark mode (De Vie palette: petrol teal on charcoal). One switch in the account menu; same key in every app. */
+html[data-theme="dark"] { color-scheme: dark; --c-ink:231 236 238; --c-ink-soft:148 163 172; --c-paper:15 20 23; --c-card:22 30 34; --c-line:42 53 59; --c-wash:29 38 43; --c-good:74 192 141; --c-good-tint:16 40 31; --c-good-line:44 94 66; --c-warn:227 160 58; --c-warn-tint:43 34 16; --c-warn-line:94 74 36; --c-danger:235 120 108; --c-danger-tint:48 24 22; --c-danger-line:94 44 40; --c-info:110 168 230; --c-info-tint:17 33 51; --c-info-line:40 70 110; --dv-paper: #0F1417; --dv-surface: #161E22; --dv-ink: #E7ECEE; --dv-ink-soft: #94A3AC; --dv-line: #2A353B; --dv-wash: #1D262B; --dv-skeleton: #1D262B; --dv-skeleton-high: #26323A; --dv-copper-deep: #F0B37A; --dv-good: #4AC08D; --dv-good-tint: #10281F; --dv-good-line: #2C5E42; --dv-warn: #E3A03A; --dv-warn-tint: #2B2210; --dv-warn-line: #5E4A24; --dv-danger: #EB786C; --dv-danger-tint: #301816; --dv-danger-line: #5E2C28; --dv-info: #6EA8E6; --dv-info-tint: #112133; --dv-info-line: #28466E; }
+.dv-profilebtn { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px 0 6px; background: transparent; border: 1px solid var(--dv-copper-soft); border-radius: var(--dv-radius-control); color: #fff; font: inherit; font-size: 13px; cursor: pointer; }
+@media (min-width: 840px) { .dv-profilebtn { min-height: 32px; } }
+.dv-profilebtn:hover { background: rgba(255,255,255,.09); }
+.dv-profilebtn .av { width: 24px; height: 24px; border-radius: 50%; background: var(--dv-copper); color: #241a10; display: inline-flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex: none; }
+.dv-profilebtn .nm { max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dv-profilebtn .cx { color: var(--dv-copper-soft); font-size: 11px; }
+.dv-menu .dv-um-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.dv-sw { width: 38px; height: 22px; border-radius: 999px; background: var(--dv-line); border: 1px solid var(--dv-ink-soft); position: relative; flex: none; transition: background .15s; }
+.dv-sw.on { background: var(--dv-green-2); border-color: var(--dv-green-2); }
+.dv-sw i { position: absolute; top: 2px; left: 2px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: left .15s; }
+.dv-sw.on i { left: 18px; }

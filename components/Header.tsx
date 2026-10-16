@@ -21,6 +21,19 @@ const SECTIONS = [
   { href: "/settings", label: "Settings" },
 ];
 
+function useTheme() {
+  const [dark, setDark] = useState(false);
+  useEffect(() => { setDark(document.documentElement.getAttribute("data-theme") === "dark"); }, []);
+  const toggle = () => {
+    const next = !dark;
+    setDark(next);
+    const el = document.documentElement;
+    if (next) el.setAttribute("data-theme", "dark"); else el.removeAttribute("data-theme");
+    try { localStorage.setItem("theme", next ? "dark" : "light"); } catch {}
+  };
+  return [dark, toggle] as const;
+}
+
 function useDismiss(open: boolean, close: () => void, refs: React.RefObject<HTMLElement>[]) {
   useEffect(() => {
     if (!open) return;
@@ -47,6 +60,8 @@ export function Header({ who }: { who: string }) {
   const navPanel = useRef<HTMLElement>(null);
   const apps = useRef<HTMLDivElement>(null);
   const acct = useRef<HTMLDivElement>(null);
+  const [dark, toggleTheme] = useTheme();
+  const initials = who.split(" ").filter(Boolean).map((w) => w[0]).slice(0, 2).join("").toUpperCase() || "·";
 
   useDismiss(navOpen, () => setNavOpen(false), [navBtn, navPanel] as React.RefObject<HTMLElement>[]);
   useDismiss(appsOpen, () => setAppsOpen(false), [apps]);
@@ -111,12 +126,18 @@ export function Header({ who }: { who: string }) {
 
         <div className="flex items-center justify-end">
           <div className="relative hidden md:block" ref={acct}>
-            <button type="button" className="dv-headbtn" aria-expanded={acctOpen} aria-haspopup="menu" onClick={() => setAcctOpen((o) => !o)}>
-              Account
+            <button type="button" className="dv-profilebtn" aria-expanded={acctOpen} aria-haspopup="menu" onClick={() => setAcctOpen((o) => !o)}>
+              <span className="av" aria-hidden>{initials}</span>
+              <span className="nm">{who}</span>
+              <span className="cx" aria-hidden>&#9662;</span>
             </button>
             {acctOpen && (
               <div role="menu" className="dv-menu right-0">
                 <div className="px-3 py-2 text-sm text-ink-soft">{who}</div>
+                <button role="menuitemcheckbox" aria-checked={dark} type="button" className="dv-um-row" onClick={toggleTheme}>
+                  <span>Dark mode</span>
+                  <span className={"dv-sw" + (dark ? " on" : "")}><i /></span>
+                </button>
                 <button role="menuitem" type="button" onClick={signOut}>
                   Sign Out
                 </button>
@@ -150,6 +171,10 @@ export function Header({ who }: { who: string }) {
             ))}
             <div className="mt-2 border-t border-paper-line pt-2">
               <div className="px-3 py-2 text-sm text-ink-soft">{who}</div>
+              <button type="button" className="dv-navpanel-item dv-um-row" role="menuitemcheckbox" aria-checked={dark} onClick={toggleTheme}>
+                <span>Dark mode</span>
+                <span className={"dv-sw" + (dark ? " on" : "")}><i /></span>
+              </button>
               <button type="button" className="dv-navpanel-item" onClick={signOut}>
                 Sign Out
               </button>
